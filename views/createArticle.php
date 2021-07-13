@@ -1,6 +1,6 @@
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="myModal" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <form action="<?php $_PHP_SELF ?>" method="post">
+    <form action="<?php $_PHP_SELF ?>" id="createForm" >
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Create New Article </h5>
@@ -31,6 +31,34 @@
 
         </div>
       </div>
+      <form>
   </div>
 </div>
 </div>
+<script>
+
+
+// this is the id of the form
+$("#createForm").submit(function(e) {
+
+e.preventDefault(); // avoid to execute the actual submit of the form.
+console.log('inside sub');
+var form = $(this);
+
+
+$.ajax({
+       type: "get",
+       url: "",
+       data: {
+         data: form,
+        route: 'create',
+        }, // serializes the form's elements.
+       success: function(data)
+       {
+           alert(data); // show response from the php script.
+       }
+     });
+
+
+});
+</script>
